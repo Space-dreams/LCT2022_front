@@ -1,0 +1,31 @@
+.registration {
+    padding: 50px;
+}
+
+.input_registration {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    height: 50px;
+}
+
+.input_registration>input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.input_registration>h4 {
+    white-space: nowrap;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+}
+
+.required {
+    width: 500px;
+}
+
+.additional {
+    width: 900px;
+}
