@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { setProfession, setStacks } from '../../storage/slises/dataSlise';
+import { useDispatch } from 'react-redux';
 
 import Header from '../header/Header';
 import Main from '../main/Main';
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setProfession());
+    dispatch(setStacks())
+  }, [])
+
   return (
     <BrowserRouter>
-      <Header />
-      <Main/>
+      <div className='wrapApp'>
+        <Header />
+        <Main />
+      </div>
     </BrowserRouter>
   );
 }

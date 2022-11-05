@@ -15,5 +15,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-console.log(store.getState())

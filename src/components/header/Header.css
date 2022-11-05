@@ -1,17 +1,79 @@
 .header {
-    padding: 0 50px;
-    height: 50px;
+    position: relative;
+    padding: 114px 120px 40px 120px;
+    height: 232px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: rgb(194, 212, 239);
+    background-color: #F5F5F5;
+
+}
+
+.nav_wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 79%;
+    z-index: 3;
+
 }
 
 .nav_header {
-   
-    padding: 0;
-    width: 760px;
-    display: flex;
+    font-size: 22px;
     justify-content: space-between;
     list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.white {
+    color: #999999;
+}
+
+.black {
+    color: white;
+}
+
+.logo {
+    width: 127px;
+    height: 65px;
+    font-size: 30px;
+}
+
+.entrance {
+    font-size: 23px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: -9px;
+    color: white;
+    z-index: 3;
+    text-decoration: none;
+}
+
+.img_head {
+    padding: 22px;
+}
+
+.owerlay_menu {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #000000;
+    backdrop-filter: blur(15px);
+    width: 160px;
+    right: 0;
+    top: 60px;
+    height: 140px;
+}
+
+.owerlay_menu >.link{
+    font-size: 24px;
+    padding-left: 20px;
+    /* background-color: #F5F5F5; */
+}
+
+.owerlay_menu >.link:hover{
+    color: #999999;
 }
