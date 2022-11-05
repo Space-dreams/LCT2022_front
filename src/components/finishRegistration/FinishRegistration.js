@@ -51,22 +51,23 @@ const FinishRegistration = () => {
             role: userData.role,
             full_name: userData.fullName,
             dateofbirth: userData.dateofbirth,
-            country: String(userData.country),
-            citizenship: String(userData.citizenship),
-            gender: userData.gender.value ? userData.gender.value : '',
+            country: JSON.stringify(userData.country),
+            citizenship: JSON.stringify(userData.citizenship),
+            gender: JSON.stringify(userData.gender.value),
             email: userData.email,
             agreement: userData.agreement,
-            education: String(userData.education),
-            employment: String(userData.employment),
-            experience: String(userData.experience),
+            education: JSON.stringify(userData.education),
+            employment: JSON.stringify(userData.employment),
+            experience: JSON.stringify(userData.experience),
             achievements: userData.achievements,
-            profession: String(userData.profession),
-            stack: String(userData.stack),
+            profession: JSON.stringify(userData.profession),
+            stack: JSON.stringify(userData.stack),
             role_in_command: userData.roleInCommand,
             command: userData.command,
-            status: String(userData.status)
+            status: JSON.stringify(userData.status)
         }
-        fetch(`/api/v1/profile/`, {
+        console.log(data);
+        fetch(`/api/v1/profile/${id}/`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { "content-type": "application/json" }
@@ -74,10 +75,10 @@ const FinishRegistration = () => {
     }
 
     const handleClick = () => {
-        // dispatch(setUser(userData));
+        dispatch(setUser(userData));
         sendUserData();
-        // sessionStorage.setItem('userLCT', JSON.stringify(userData))
-        // navigate('/user_page')
+        sessionStorage.setItem('userLCT', JSON.stringify(userData))
+        navigate('/user_page')
     }
 
     const styles = {

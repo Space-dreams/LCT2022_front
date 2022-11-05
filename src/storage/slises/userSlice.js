@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   token: JSON.parse(sessionStorage.getItem('token')) || null,
-  id: null,
+  id: JSON.parse(sessionStorage.getItem('id')) || null,
   user: JSON.parse(sessionStorage.getItem('userLCT')) || {
     nickName: null,
     role: null,
@@ -57,20 +57,20 @@ export const fetchUserData = createAsyncThunk(
         userForf.role = data.role
         userForf.fullName = data.full_name
         userForf.dateofbirth = data.dateofbirth
-        userForf.country = data.country
-        userForf.citizenship = data.citizenship
-        userForf.gender = data.gender
+        userForf.country = JSON.parse(data.country)
+        userForf.citizenship = JSON.parse(data.citizenship)
+        userForf.gender = JSON.parse(data.gender)
         userForf.email = data.email
         userForf.agreement = data.agreement
-        userForf.education = data.education
-        userForf.employment = data.employment
-        userForf.experience = data.experience
+        userForf.education = JSON.parse(data.education)
+        userForf.employment = JSON.parse(data.employment)
+        userForf.experience = JSON.parse(data.experience)
         userForf.achievements = data.achievements
-        userForf.profession = data.profession
-        userForf.stack = data.stack
+        userForf.profession = JSON.parse(data.profession)
+        userForf.stack = JSON.parse(data.stack)
         userForf.roleInCommand = data.role_in_command
         userForf.command = data.command
-        userForf.status = data.status
+        userForf.status = JSON.parse(data.status)
         sessionStorage.setItem('userLCT', JSON.stringify(userForf))
         return userForf
       })
@@ -94,6 +94,7 @@ export const fetchUserLogin = createAsyncThunk(
       .then((data) => data.json())
       .then((data) => {
         sessionStorage.setItem('token', JSON.stringify(data.auth_token))
+        sessionStorage.setItem('id', JSON.stringify(data.id))
         return data
       })
     return response;

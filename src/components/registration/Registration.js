@@ -54,7 +54,7 @@ const Registration = () => {
             </input>
             <button
                 className="autorization reg_button"
-                onClick={fetchToRegistration}>Зарегестрироваться</button>
+                onClick={fetchToRegistration}>Зарегистрироваться</button>
         </div >
 
     )

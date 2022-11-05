@@ -58,9 +58,9 @@ const Header = () => {
                         <Link
                             onClick={() => {
                                 dispatch(logOut())
-                                console.log('sdcvwver');
                                 handleClick();
                                 sessionStorage.removeItem('token')
+                                sessionStorage.removeItem('userLCT')
                             }}
                             className="link"
                             to={'/'}>
@@ -108,7 +108,7 @@ const Header = () => {
                         Войти
                     </Link>
                     :
-                    <div style={{ position: 'relative' }}>
+                    <div style={{ position: 'relative', width: '226px' }}>
 
                         <img className="img_head" src={search}></img>
                         <img className="img_head" src={messege}></img>

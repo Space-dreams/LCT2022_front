@@ -55,7 +55,6 @@ const Auth = () => {
                 }
                 }>
                 Продолжить</button>
-            <button onClick={() => dispatch(fetchUserData(4))}>rverevrebbtrbrtbtbtrbrbt</button>
             <span className="or">или</span>
             <Link className="link to_reg" to={'/registration'}>Зарегистрироваться</Link>
 
