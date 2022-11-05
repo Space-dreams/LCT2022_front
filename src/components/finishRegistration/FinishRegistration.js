@@ -53,7 +53,7 @@ const FinishRegistration = () => {
             dateofbirth: userData.dateofbirth,
             country: String(userData.country),
             citizenship: String(userData.citizenship),
-            gender: userData.gender.value,
+            gender: userData.gender.value ? userData.gender.value : '',
             email: userData.email,
             agreement: userData.agreement,
             education: String(userData.education),
