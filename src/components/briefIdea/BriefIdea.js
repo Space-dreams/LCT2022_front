@@ -3,11 +3,16 @@ import { useSelector } from "react-redux";
 
 import './BriefIdea.css'
 
-const BriefIdea = ({ name, description, stack }) => {
-    const { stacks } = useSelector((state) => state.data)
-    const stackList = stack.map(item => stacks.find((i) => i.id === item).name).map(item => {
+const BriefIdea = ({ id }) => {
+
+    const { stacks, allIdeas } = useSelector((state) => state.data)
+console.log(allIdeas,id)
+    const elem = allIdeas.find((item) => item.id === id);
+   if (elem===undefined){return null}
+
+    const stackList = elem.stack.map(item => stacks.find((i) => i.id === item).name).map(item => {
         return (
-            <li>{item}</li>
+            <li key={item}>{item}</li>
         )
     })
 
@@ -15,9 +20,9 @@ const BriefIdea = ({ name, description, stack }) => {
 
     return (
         <div className="briefIdea">
-            <h2>{name}</h2>
+            <h2>{elem.name}</h2>
             <div style={{ border: '2px solid #000000', backgroundColor: '#000000' }}></div>
-            <div>{description}</div>
+            <div>{elem.description}</div>
             <ul>{
                 stackList}
             </ul>

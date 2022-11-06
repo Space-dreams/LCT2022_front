@@ -33,3 +33,9 @@ margin: 0;
     width: 370px;
     margin: 0;
 }
+
+.backFeed{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

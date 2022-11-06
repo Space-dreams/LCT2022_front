@@ -5,7 +5,9 @@ import BriefIdea from "../briefIdea/BriefIdea";
 import './IdeasFeed.css'
 
 import heed from '../../images/heed.png';
+
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const IdeasFeed = () => {
 
@@ -14,10 +16,12 @@ const IdeasFeed = () => {
     const list = allIdeas.map(item => {
         return (
             <li key={item.id} >
-                <BriefIdea
-                    name={item.name}
-                    description={item.description}
-                    stack={item.stack} />
+                <Link
+                    to={`/${item.id}`}
+                    className="link"
+                >
+                    <BriefIdea id = {item.id} />
+                </Link>
             </li>)
     })
 

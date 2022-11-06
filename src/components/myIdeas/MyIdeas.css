@@ -1,0 +1,45 @@
+.addIdea {
+    display: flex;
+    flex-direction: column;
+    margin-top: -80px;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+.addIdea>input,
+.addIdea>textarea {
+    font-family: RobotoRegular;
+    background-color: #F5F5F5;
+    /* border: none; */
+    outline: none;
+
+    font-size: 18px;
+}
+
+.addIdea>input {
+    border: none;
+    border-bottom: 1px black solid;
+}
+
+.dtextAreaMy {
+    height: 80px;
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+    border: 1px black solid;
+    overflow-y: auto;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+.addButtin {
+    background-color: #F5F5F5;
+    color: black;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 24px;
+    width: 35%;
+    align-self: center;
+}

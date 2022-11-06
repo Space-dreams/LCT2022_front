@@ -53,7 +53,7 @@ const FinishRegistration = () => {
             dateofbirth: userData.dateofbirth,
             country: JSON.stringify(userData.country),
             citizenship: JSON.stringify(userData.citizenship),
-            gender: JSON.stringify(userData.gender.value),
+            gender: JSON.stringify(userData.gender),
             email: userData.email,
             agreement: userData.agreement,
             education: JSON.stringify(userData.education),

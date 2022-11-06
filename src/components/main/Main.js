@@ -13,6 +13,8 @@ import MyIdeas from "../myIdeas/MyIdeas";
 import Project from "../project/Project";
 
 import './Main.css'
+import BriefIdea from "../briefIdea/BriefIdea";
+import FullIdea from "../fullIdea/FullIdea";
 
 
 
@@ -25,7 +27,13 @@ const Main = () => {
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/feed" element={<IdeasFeed />} />
+
                 <Route path="/ideas" element={<MyIdeas />} />
+
+
+                <Route path=":cardId" element={<FullIdea/>} />
+
+
                 <Route path="/project" element={<Project />} />
                 <Route path="/registration" element={<Registration />} />
                 <Route path="/finish_registration" element={<FinishRegistration />} />

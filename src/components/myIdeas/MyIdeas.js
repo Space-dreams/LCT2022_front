@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Select from 'react-select';
 
-const MyIdeas = () => {
-    const id = useSelector(state => state.user.id)
-    const { stacks, profession } = useSelector((state) => state.data)
+import heed from '../../images/heed.png';
+import { newMyIdea, setMyIdeas } from "../../storage/slises/dataSlise";
+import BriefIdea from "../briefIdea/BriefIdea";
 
-    useEffect(() => {
-        fetch(`/api/v1/user_ideas/${id}/`)
-    }, [])
+import './MyIdeas.css'
+
+const MyIdeas = () => {
+
+    const id = useSelector(state => state.user.id)
+    const { stacks, myIdeas } = useSelector((state) => state.data)
+
+    const dispatch = useDispatch()
 
     const [userData, setUserData] = useState({
         stack: [],
@@ -30,6 +36,13 @@ const MyIdeas = () => {
             body: JSON.stringify(newIdea),
             headers: { "content-type": "application/json" }
         })
+            .then(() => { dispatch(setMyIdeas(id)) });
+        setUserData({
+            stack: [{ value: '', label: '' }],
+            name: '',
+            description: ''
+        })
+
 
     }
 
@@ -38,14 +51,14 @@ const MyIdeas = () => {
             ...styles,
             outline: 'none',
             padding: '4px',
-            border: 'none',
+            // border: 'none',
             cursor: 'pointer',
             color: '#5E6C84',
-            width: '400px',
+            // width: '70%',
             borderRadius: '8px',
             backgroundColor: '#F5F5F5',
             height: '48px',
-            fontSize: '25px',
+            fontSize: '18px',
             paddinLeft: '20px'
 
         }),
@@ -56,8 +69,10 @@ const MyIdeas = () => {
 
         option: styles => ({
             ...styles,
+            color: '#000000',
             cursor: 'pointer',
-            fontSize: '25px',
+            fontSize: '18px',
+            // width: '70%',
             paddinLeft: '20px'
         })
     }
@@ -69,15 +84,30 @@ const MyIdeas = () => {
         }
     })
 
+
+    const list = myIdeas.map(item => {
+        return (
+            <li key={item.id} >
+                <Link
+                    to={`/${item.id}`}
+                    className="link"
+                >
+                    <BriefIdea id={item.id} />
+                </Link>
+            </li>)
+    })
     return (
 
         <div>
-            <h1>My Ideas</h1>
-            <button
-                onClick={handleClick}
-                className="autorization"> ADD IDEA</button>
+            <div className="feed">
+                <div className="black_feed"> <h2>Мои идеи</h2><img className="heed" src={heed}></img></div>
+                <ul>
+                    {list}
+                </ul>
+            </div>
 
-            <div>
+            <div className="addIdea">
+                <h3>Добавить идею</h3>
                 Название:
                 <input
                     value={userData.name}
@@ -85,6 +115,7 @@ const MyIdeas = () => {
                 </input>
                 Описание:
                 <textarea
+                    className="dtextAreaMy"
                     value={userData.description}
                     onChange={(e) => setUserData({ ...userData, description: e.target.value })}>
                 </textarea>
@@ -92,26 +123,19 @@ const MyIdeas = () => {
                 <Select
                     placeholder='Выберите необходимые навыки'
                     styles={styles}
+                    defaultValue={userData.stack}
                     onChange={(e) => setUserData({ ...userData, stack: e })}
                     className="basic-single"
                     isMulti
                     options={stacksList}
                 ></Select>
+                <button
+                    className="addButtin"
+                    onClick={handleClick}
+                > Добавить идею</button>
+
 
             </div>
-            <button
-                className="autorization"
-                onClick={() => {
-                    fetch('/api/v1/comment/20/', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            // id:20,
-                            author: id,
-                            text: 'Test comment'
-                        }),
-                        headers: { "content-type": "application/json" }
-                    })
-                }}>FETCH</button>
         </div>
 
 
