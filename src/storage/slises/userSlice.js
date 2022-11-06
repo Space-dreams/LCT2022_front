@@ -57,20 +57,20 @@ export const fetchUserData = createAsyncThunk(
         userForf.role = data.role
         userForf.fullName = data.full_name
         userForf.dateofbirth = data.dateofbirth
-        userForf.country = (!data.country === '') ? JSON.parse(data.country) : ''
-        userForf.citizenship = (!data.citizenship === '') ? JSON.parse(data.citizenship) : ''
-        userForf.gender = (!data.gender === '') ? JSON.parse(data.gender) : ''
+        userForf.country = !(data.country === '') ? JSON.parse(data.country) : ''
+        userForf.citizenship = !(data.citizenship === '') ? JSON.parse(data.citizenship) : ''
+        userForf.gender = !(data.gender === '') ? JSON.parse(data.gender) : ''
         userForf.email = data.email
         userForf.agreement = data.agreement
-        userForf.education = (!data.education === '') ? JSON.parse(data.education) : ''
-        userForf.employment = (!data.employment === '') ? JSON.parse(data.employment) : ''
-        userForf.experience = (!data.experience === '') ? JSON.parse(data.experience) : ''
+        userForf.education = !(data.education === '') ? JSON.parse(data.education) : ''
+        userForf.employment = !(data.employment === '') ? JSON.parse(data.employment) : ''
+        userForf.experience = !(data.experience === '') ? JSON.parse(data.experience) : ''
         userForf.achievements = data.achievements
-        userForf.profession = (!data.profession === '') ? JSON.parse(data.profession) : ''
-        userForf.stack = (!data.stack === '') ? JSON.parse(data.stack) : ''
+        userForf.profession = !(data.profession === '') ? JSON.parse(data.profession) : ''
+        userForf.stack = !(data.stack === '') ? JSON.parse(data.stack) : ''
         userForf.roleInCommand = data.role_in_command
         userForf.command = data.command
-        userForf.status = (!data.status === '') ? JSON.parse(data.status) : ''
+        userForf.status = !(data.status === '') ? JSON.parse(data.status) : ''
         sessionStorage.setItem('userLCT', JSON.stringify(userForf))
         return userForf
       })
@@ -106,7 +106,11 @@ export const userSlice = createSlice({
   initialState,
 
   reducers: {
-    logOut: (state) => { state.token = null; },
+    logOut: (state) => {
+      state.token = null;
+      state.id = null;
+      state.user = null;
+    },
 
     setUser: (state, action) => {
       state.user = action.payload;

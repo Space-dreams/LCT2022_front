@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { setProfession, setStacks } from '../../storage/slises/dataSlise';
+import { setCountry, setProfession, setStacks } from '../../storage/slises/dataSlise';
 import { useDispatch } from 'react-redux';
 
 import Header from '../header/Header';
@@ -12,7 +12,8 @@ function App() {
 
   useEffect(() => {
     dispatch(setProfession());
-    dispatch(setStacks())
+    dispatch(setStacks());
+    dispatch(setCountry());
   }, [])
 
   return (

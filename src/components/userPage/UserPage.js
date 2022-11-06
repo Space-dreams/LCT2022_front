@@ -12,6 +12,7 @@ const UserPage = () => {
     const user = useSelector((state) => state.user.user)
 
     const requiredFull = user.fullName && user.email && user.dateofbirth
+
     useEffect(() => {
         if (!requiredFull) { navigate('/finish_registration') }
     })

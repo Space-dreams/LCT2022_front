@@ -21,7 +21,7 @@ const FinishRegistration = () => {
 
     const user = useSelector(state => state.user.user);
     const id = useSelector(state => state.user.id)
-    const { stacks, profession } = useSelector((state) => state.data)
+    const { stacks, profession, country } = useSelector((state) => state.data)
 
     const [userData, setUserData] = useState({
         nickName: user.nickName,
@@ -66,7 +66,7 @@ const FinishRegistration = () => {
             command: userData.command,
             status: JSON.stringify(userData.status)
         }
-        console.log(data);
+
         fetch(`/api/v1/profile/${id}/`, {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -118,6 +118,13 @@ const FinishRegistration = () => {
         }
     })
 
+    const countryList = country.map((item) => {
+        return {
+            value: item.id,
+            label: item.name
+        }
+    })
+
     const stacksList = stacks.map((item) => {
         return {
             value: item.id,
@@ -162,11 +169,7 @@ const FinishRegistration = () => {
                     defaultValue={userData.country}
                     onChange={(e) => setUserData({ ...userData, country: e })}
                     className="basic-single"
-                    options={[
-                        { value: 1, label: 'Россия' },
-                        { value: 2, label: 'Казахстан' },
-                        { value: 3, label: 'Беларусь' }
-                    ]}
+                    options={countryList}
                 />
             </div>
 
@@ -178,11 +181,7 @@ const FinishRegistration = () => {
                     defaultValue={userData.citizenship}
                     onChange={(e) => setUserData({ ...userData, citizenship: e })}
                     className="basic-single"
-                    options={[
-                        { value: 1, label: 'Россия' },
-                        { value: 2, label: 'Казахстан' },
-                        { value: 3, label: 'Беларусь' }
-                    ]}
+                    options={countryList}
                 />
             </div>
 
