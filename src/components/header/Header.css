@@ -59,13 +59,14 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(228, 212, 212, 0.4);
     border: 1px solid #000000;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     width: 160px;
     right: 0;
     top: 60px;
     height: 140px;
+    z-index: 300;
 }
 
 .owerlay_menu >.link{

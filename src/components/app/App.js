@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { setCountry, setProfession, setStacks } from '../../storage/slises/dataSlise';
+import { setAllIdeas, setCountry, setProfession, setStacks } from '../../storage/slises/dataSlise';
 import { useDispatch } from 'react-redux';
 
 import Header from '../header/Header';
@@ -14,6 +14,7 @@ function App() {
     dispatch(setProfession());
     dispatch(setStacks());
     dispatch(setCountry());
+    dispatch(setAllIdeas());
   }, [])
 
   return (

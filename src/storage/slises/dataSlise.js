@@ -3,7 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
     profession: [],
     stacks: [],
-    country: []
+    country: [],
+    allIdeas:[]
 };
 
 export const setProfession = createAsyncThunk(
@@ -33,6 +34,17 @@ export const setCountry = createAsyncThunk(
     }
 );
 
+
+export const setAllIdeas = createAsyncThunk(
+    'user/setAllIdeas',
+    async () => {
+        const response = await fetch('/api/v1/all_ideas/')
+            .then((data) => data.json());
+        return response;
+    }
+);
+
+
 export const dataSlice = createSlice({
     name: 'data',
     initialState,
@@ -45,6 +57,9 @@ export const dataSlice = createSlice({
             })
             .addCase(setCountry.fulfilled, (state, action) => {
                 state.country = action.payload;
+            })
+            .addCase(setAllIdeas.fulfilled, (state, action) => {
+                state.allIdeas = action.payload;
             })
             .addCase(setStacks.fulfilled, (state, action) => {
                 state.stacks = action.payload;

@@ -7,7 +7,7 @@ const MyIdeas = () => {
     const { stacks, profession } = useSelector((state) => state.data)
 
     useEffect(() => {
-        fetch(`/api/v1/all_ideas/`)
+        fetch(`/api/v1/user_ideas/${id}/`)
     }, [])
 
     const [userData, setUserData] = useState({
@@ -18,18 +18,18 @@ const MyIdeas = () => {
 
     const handleClick = () => {
         const newIdea = {
-            author:id,
-            description:userData.description,
-            name:userData.name,
-            stack:userData.stack.map(item=>item.value)
+            author: id,
+            description: userData.description,
+            name: userData.name,
+            stack: userData.stack.map(item => item.value)
 
         }
-        
+
         fetch('/api/v1/user_ideas/', {
             method: 'POST',
             body: JSON.stringify(newIdea),
             headers: { "content-type": "application/json" }
-          })
+        })
 
     }
 
@@ -47,7 +47,7 @@ const MyIdeas = () => {
             height: '48px',
             fontSize: '25px',
             paddinLeft: '20px'
-            
+
         }),
         placeholder: styles => ({
             ...styles,
@@ -99,11 +99,19 @@ const MyIdeas = () => {
                 ></Select>
 
             </div>
-<button
-className="autorization"
-onClick={()=>{
-    fetch('/api/v1/comment/20/')
-}}>FETCH</button>
+            <button
+                className="autorization"
+                onClick={() => {
+                    fetch('/api/v1/comment/20/', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            // id:20,
+                            author: id,
+                            text: 'Test comment'
+                        }),
+                        headers: { "content-type": "application/json" }
+                    })
+                }}>FETCH</button>
         </div>
 
 
