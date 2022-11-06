@@ -6,13 +6,14 @@ import './BriefIdea.css'
 const BriefIdea = ({ id }) => {
 
     const { stacks, allIdeas } = useSelector((state) => state.data)
-console.log(allIdeas,id)
+    console.log(allIdeas, id)
     const elem = allIdeas.find((item) => item.id === id);
-   if (elem===undefined){return null}
 
     const stackList = elem.stack.map(item => stacks.find((i) => i.id === item).name).map(item => {
         return (
-            <li key={item}>{item}</li>
+            <li key={item}>
+                {item}
+            </li>
         )
     })
 

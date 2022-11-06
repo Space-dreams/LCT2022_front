@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Select from 'react-select';
 
 import heed from '../../images/heed.png';
-import { newMyIdea, setMyIdeas } from "../../storage/slises/dataSlise";
+import { newMyIdea, setMyIdeas, setAllIdeas } from "../../storage/slises/dataSlise";
 import BriefIdea from "../briefIdea/BriefIdea";
 
 import './MyIdeas.css'
@@ -36,7 +36,12 @@ const MyIdeas = () => {
             body: JSON.stringify(newIdea),
             headers: { "content-type": "application/json" }
         })
-            .then(() => { dispatch(setMyIdeas(id)) });
+            .then(() => {
+                dispatch(setAllIdeas())
+                    .then(() => { dispatch(setMyIdeas(id)) })
+
+            })
+
         setUserData({
             stack: [{ value: '', label: '' }],
             name: '',
