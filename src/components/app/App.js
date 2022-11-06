@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { setProfession, setStacks } from '../../storage/slises/dataSlise';
-import { useDispatch } from 'react-redux';
+import { setAllIdeas, setCountry, setMyIdeas, setProfession, setStacks } from '../../storage/slises/dataSlise';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../header/Header';
 import Main from '../main/Main';
 
 function App() {
-
+  const id = useSelector(state => state.user.id)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(setProfession());
-    dispatch(setStacks())
+    dispatch(setStacks());
+    dispatch(setCountry());
+    dispatch(setAllIdeas());
+    dispatch(setMyIdeas(id))
   }, [])
 
   return (

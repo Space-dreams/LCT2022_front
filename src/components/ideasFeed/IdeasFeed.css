@@ -1,0 +1,41 @@
+.black_feed {
+    background-color: black;
+    color: white;
+    height: 198px;
+    padding: 27px 117px;
+    box-sizing: border-box;
+}
+
+.black_feed>h2 {
+    margin: 0;
+    font-size: 35px;
+}
+
+.feed {
+    position: relative;
+}
+
+.heed {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.feed>ul {
+    padding: 80px;
+margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 80px;
+    list-style: none;
+}
+.feed>ul >li{
+    width: 370px;
+    margin: 0;
+}
+
+.backFeed{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
